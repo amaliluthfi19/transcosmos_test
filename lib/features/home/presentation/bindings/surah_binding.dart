@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../../../../core/utils/api_helper.dart';
-import '../../../../data/surah_rest_client/surah_rest_client.dart';
+import '../../../../data/rest_clients/surah_rest_client.dart';
 import '../../../../data/repositories/surah_repository_impl.dart';
 import '../../../../domain/repositories/surah_repository.dart';
 import '../../../../domain/usecases/get_surahs_usecase.dart';

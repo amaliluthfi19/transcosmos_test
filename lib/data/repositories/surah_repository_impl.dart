@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/surah.dart';
 import '../../domain/repositories/surah_repository.dart';
-import '../surah_rest_client/surah_rest_client.dart';
+import '../rest_clients/surah_rest_client.dart';
 
 class SurahRepositoryImpl implements SurahRepository {
   final SurahRestClient remoteDataSource;
