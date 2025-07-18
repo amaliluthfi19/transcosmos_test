@@ -2,6 +2,11 @@
 
 A Flutter application for reading and listening to Quran surahs
 
+## Features
+- **See all surah**
+- **Read Details of Surah**
+- **Listen Surah**
+
 ### 📁 Project Structure
 
 ```
@@ -57,11 +62,6 @@ lib/
    ```bash
    click run and debug in VS code
    ```
-
-## Features
-- **See all surah**
-- **Read Details of Surah**
-- **Listen Surah**
 
 ### Adding New Features
 
