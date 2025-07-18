@@ -6,13 +6,13 @@ A Flutter application for reading and listening to Quran surahs
 
 ```
 lib/
-├── core/                    # Core functionality
+├── core/                   # Core functionality
 │   ├── constants/          # App constants
 │   ├── routes/             # Route definitions
 │   ├── theme/              # App themes
 │   └── utils/              # Utility classes
 ├── data/                   # Data layer
-│   ├── rest_clients/        # Data sources (API, Local)
+│   ├── rest_clients/       # Data sources (API, Local)
 │   ├── models/             # Data models
 │   └── repositories/       # Repository implementations
 ├── domain/                 # Domain layer
@@ -23,14 +23,14 @@ lib/
     | 
     ├── home/
     | 
-    └── presentation/           # Presentation layer
-    │   ├── bindings/           # GetX dependency bindings
-    │   ├── controllers/        # GetX controllers
-    │   ├── screens/            # UI screens
-    │   └── widgets/            # Reusable widgets
-    └── shared/                 # Shared components
-        ├── models/             # Shared models
-        └── widgets/            # Shared widgets
+    └── presentation/         # Presentation layer
+    │   ├── bindings/         # GetX dependency bindings
+    │   ├── controllers/      # GetX controllers
+    │   ├── screens/          # UI screens
+    │   └── widgets/          # Reusable widgets
+    └── shared/               # Shared components
+        ├── models/           # Shared models
+        └── widgets/          # Shared widgets
 ```
 
 ## Getting Started
