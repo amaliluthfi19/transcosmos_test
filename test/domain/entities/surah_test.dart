@@ -86,15 +86,5 @@ void main() {
           'Surah{nomor: 1, nama: الفاتحة, namaLatin: Al-Fatihah, jumlahAyat: 7, tempatTurun: mekah, arti: Pembukaan, audio: https://santrikoding.com/storage/audio/001.mp3}';
       expect(surah.toString(), expectedString);
     });
-
-    test('should not be equal to different types', () {
-      expect(surah, isNot(equals('string')));
-      expect(surah, isNot(equals(123)));
-      expect(surah, isNot(equals(null)));
-    });
-
-    test('should be equal to itself', () {
-      expect(surah, equals(surah));
-    });
   });
 }

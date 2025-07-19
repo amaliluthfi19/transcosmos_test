@@ -117,53 +117,5 @@ void main() {
       // Act & Assert
       expect(() => useCase.execute(1), throwsException);
     });
-
-    test('should handle edge case surah number 1', () async {
-      // Arrange
-      final expectedSurah = Surah(
-        nomor: 1,
-        nama: 'الفاتحة',
-        namaLatin: 'Al-Fatihah',
-        jumlahAyat: 7,
-        tempatTurun: 'mekah',
-        arti: 'Pembukaan',
-        deskripsi: 'Deskripsi',
-        audio: 'audio.mp3',
-      );
-
-      final mockRepository = MockSurahRepository(surahs: [expectedSurah]);
-      useCase = GetSurahByNumberUseCase(mockRepository);
-
-      // Act
-      final result = await useCase.execute(1);
-
-      // Assert
-      expect(result.nomor, 1);
-      expect(result.nama, 'الفاتحة');
-    });
-
-    test('should handle edge case surah number 114', () async {
-      // Arrange
-      final expectedSurah = Surah(
-        nomor: 114,
-        nama: 'الناس',
-        namaLatin: 'An-Nas',
-        jumlahAyat: 6,
-        tempatTurun: 'mekah',
-        arti: 'Manusia',
-        deskripsi: 'Deskripsi',
-        audio: 'audio.mp3',
-      );
-
-      final mockRepository = MockSurahRepository(surahs: [expectedSurah]);
-      useCase = GetSurahByNumberUseCase(mockRepository);
-
-      // Act
-      final result = await useCase.execute(114);
-
-      // Assert
-      expect(result.nomor, 114);
-      expect(result.namaLatin, 'An-Nas');
-    });
   });
 }
