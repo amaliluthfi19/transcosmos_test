@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../../core/utils/api_helper.dart';
+import '../../../data/rest_clients/api_helper.dart';
 import '../../../data/rest_clients/surah_rest_client.dart';
 import '../../../data/repositories/surah_repository_impl.dart';
 import '../../../domain/repositories/surah_repository.dart';

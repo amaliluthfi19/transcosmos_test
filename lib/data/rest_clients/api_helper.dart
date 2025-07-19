@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import '../constants/app_constants.dart';
+import '../../core/constants/app_constants.dart';
 
 class ApiHelper {
   static final ApiHelper _instance = ApiHelper._internal();

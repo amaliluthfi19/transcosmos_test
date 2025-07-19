@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:transcosmos_test/core/constants/app_constants.dart';
 
-import '../../core/utils/api_helper.dart';
+import 'api_helper.dart';
 import '../models/surah_model.dart';
 
 abstract class SurahRestClient {
