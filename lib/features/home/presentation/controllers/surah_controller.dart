@@ -14,14 +14,14 @@ class SurahController extends GetxController {
   final Rx<Surah?> _selectedSurah = Rx<Surah?>(null);
   final RxBool _isLoading = false.obs;
   final RxString _errorMessage = ''.obs;
-  final RxString _searchQuery = ''.obs;
+  final RxString _searchKeyword = ''.obs;
 
   // Getters
   List<Surah> get surahs => _surahs;
   Surah? get selectedSurah => _selectedSurah.value;
   bool get isLoading => _isLoading.value;
   String get errorMessage => _errorMessage.value;
-  String get searchQuery => _searchQuery.value;
+  String get searchQuery => _searchKeyword.value;
 
   @override
   void onInit() {
@@ -58,20 +58,20 @@ class SurahController extends GetxController {
     }
   }
 
-  void setSearchQuery(String query) {
-    _searchQuery.value = query;
+  void setSearchKeyword(String keyword) {
+    _searchKeyword.value = keyword;
   }
 
   List<Surah> get filteredSurahs {
-    if (_searchQuery.value.isEmpty) {
+    if (_searchKeyword.value.isEmpty) {
       return _surahs;
     }
 
-    final query = _searchQuery.value.toLowerCase();
+    final keyword = _searchKeyword.value.toLowerCase();
     return _surahs.where((surah) {
-      return surah.namaLatin.toLowerCase().contains(query) ||
-          surah.arti.toLowerCase().contains(query) ||
-          surah.nama.contains(query);
+      return surah.namaLatin.toLowerCase().contains(keyword) ||
+          surah.arti.toLowerCase().contains(keyword) ||
+          surah.nama.contains(keyword);
     }).toList();
   }
 

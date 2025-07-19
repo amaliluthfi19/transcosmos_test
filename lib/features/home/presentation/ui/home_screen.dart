@@ -69,7 +69,7 @@ class HomeScreen extends GetView<SurahController> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
-              onChanged: (value) => controller.setSearchQuery(value),
+              onChanged: (value) => controller.setSearchKeyword(value),
               decoration: InputDecoration(
                 hintText: 'Cari surah...',
                 prefixIcon: const Icon(Icons.search),
@@ -77,7 +77,7 @@ class HomeScreen extends GetView<SurahController> {
                     controller.searchQuery.isNotEmpty
                         ? IconButton(
                           icon: const Icon(Icons.clear),
-                          onPressed: () => controller.setSearchQuery(''),
+                          onPressed: () => controller.setSearchKeyword(''),
                         )
                         : null,
                 border: OutlineInputBorder(
@@ -142,21 +142,7 @@ class HomeScreen extends GetView<SurahController> {
                 itemCount: surahs.length,
                 itemBuilder: (context, index) {
                   final surah = surahs[index];
-                  return SurahCard(
-                    surah: surah,
-                    onTap: () {
-                      // Navigate to surah detail or play audio
-                      controller.getSurahByNumber(surah.nomor);
-                      Get.snackbar(
-                        'Surah ${surah.namaLatin}',
-                        'Memuat surah...',
-                        snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        colorText: Colors.white,
-                        duration: const Duration(seconds: 2),
-                      );
-                    },
-                  );
+                  return SurahCard(surah: surah, onTap: () {});
                 },
               );
             }),
