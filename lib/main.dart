@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'core/constants/app_constants.dart';
+import 'package:transcosmos_test/core/constants/route_constans.dart';
 import 'core/routes/app_routes.dart';
 import 'core/theme/app_theme.dart';
 
@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: AppConstants.appName,
       theme: appTheme,
       themeMode: ThemeMode.system,
-      initialRoute: AppConstants.homeRoute,
+      initialRoute: RouteConstants.home,
       getPages: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );

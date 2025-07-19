@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:transcosmos_test/domain/entities/surah.dart';
-import 'package:transcosmos_test/domain/repositories/surah_repository.dart';
+import 'package:transcosmos_test/domain/repositories/home_repository.dart';
 import 'package:transcosmos_test/domain/usecases/get_surahs_usecase.dart';
 
 // Mock repository for testing
-class MockSurahRepository implements SurahRepository {
+class MockSurahRepository implements HomeRepository {
   final List<Surah> _surahs;
   final Exception? _exception;
 
@@ -16,13 +16,6 @@ class MockSurahRepository implements SurahRepository {
   Future<List<Surah>> getAllSurahs() async {
     if (_exception != null) throw _exception;
     return _surahs;
-  }
-
-  @override
-  Future<Surah> getSurahByNumber(int nomor) async {
-    if (_exception != null) throw _exception;
-    final surah = _surahs.firstWhere((s) => s.nomor == nomor);
-    return surah;
   }
 }
 

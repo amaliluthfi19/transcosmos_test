@@ -1,4 +1,4 @@
-import '../../domain/entities/surah.dart';
+import 'package:transcosmos_test/domain/entities/surah.dart';
 
 class SurahModel extends Surah {
   SurahModel({
