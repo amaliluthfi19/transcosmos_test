@@ -7,12 +7,6 @@ A Flutter application for reading and listening to Quran surahs
 - **Read Details of Surah**
 - **Listen Surah**
 
-## App Record
-
-<video width="320" controls>
-  <source src="quran_app_record.mp4" type="video/mp4">
-</video>
-
 ### 📁 Project Structure
 
 ```
