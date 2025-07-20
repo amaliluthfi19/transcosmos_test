@@ -4,39 +4,59 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:transcosmos_test/domain/entities/surah_detail.dart';
 import 'package:transcosmos_test/domain/entities/surah.dart';
 import 'package:transcosmos_test/domain/entities/ayat.dart';
+import 'package:transcosmos_test/presentations/surah_detail/controllers/surah_detail_controller.dart';
 import '../../domain/usecases/get_surah_detail_usecase_test.dart';
 
 // Mock controller for testing without AudioPlayer
-class MockSurahDetailController extends GetxController {
+class MockSurahDetailController extends GetxController
+    implements SurahDetailController {
   final _surahDetail = Rxn<SurahDetail>();
   final _isLoading = false.obs;
   final _errorMessage = ''.obs;
+  final _isPlaying = false.obs;
+  final _isLoadingAudio = false.obs;
+  final _isSeeking = false.obs;
+  final _currentPosition = Duration.zero.obs;
+  final _totalDuration = Duration.zero.obs;
+  final _audioProgress = 0.0.obs;
   final _audioPlayerHeight = 0.0.obs;
 
+  // Track if states were manually set for testing
+  bool _manualErrorSet = false;
+  bool _manualSurahDetailSet = false;
+
   // Getters
+  @override
   SurahDetail? get surahDetail => _surahDetail.value;
+  @override
   bool get isLoading => _isLoading.value;
+  @override
   String get errorMessage => _errorMessage.value;
+  @override
+  bool get isPlaying => _isPlaying.value;
+  @override
+  bool get isLoadingAudio => _isLoadingAudio.value;
+  @override
+  bool get isSeeking => _isSeeking.value;
+  @override
+  Duration get currentPosition => _currentPosition.value;
+  @override
+  Duration get totalDuration => _totalDuration.value;
+  @override
+  double get audioProgress => _audioProgress.value;
+  @override
   double get audioPlayerHeight => _audioPlayerHeight.value;
 
-  void setLoading(bool loading) {
-    _isLoading.value = loading;
-  }
-
-  void setSurahDetail(SurahDetail? detail) {
-    _surahDetail.value = detail;
-  }
-
-  void setError(String error) {
-    _errorMessage.value = error;
-  }
-
+  // Mock implementation of getSurahDetail
+  @override
   Future<void> getSurahDetail(int nomor) async {
-    // Mock implementation
+    // If manual states were set for testing, respect them
+    if (_manualErrorSet || _manualSurahDetailSet) {
+      return; // Don't override manually set states
+    }
+
     _isLoading.value = true;
     _errorMessage.value = '';
-
-    await Future.delayed(const Duration(milliseconds: 100));
 
     // Simulate success or error based on nomor
     if (nomor == 1) {
@@ -46,6 +66,107 @@ class MockSurahDetailController extends GetxController {
     }
 
     _isLoading.value = false;
+  }
+
+  // Helper methods for testing
+  void setSurahDetail(SurahDetail? detail) {
+    _manualSurahDetailSet = true;
+    _surahDetail.value = detail;
+  }
+
+  void setError(String error) {
+    _manualErrorSet = true;
+    _errorMessage.value = error;
+  }
+
+  // Reset manual state tracking
+  void resetManualStates() {
+    _manualErrorSet = false;
+    _manualSurahDetailSet = false;
+  }
+
+  // Mock audio methods
+  @override
+  Future<void> playAudio() async {
+    _isPlaying.value = true;
+  }
+
+  @override
+  Future<void> pauseAudio() async {
+    _isPlaying.value = false;
+  }
+
+  @override
+  Future<void> stopAudio() async {
+    _isPlaying.value = false;
+    _currentPosition.value = Duration.zero;
+    _audioProgress.value = 0.0;
+  }
+
+  @override
+  Future<void> seekAudio(Duration position) async {
+    _currentPosition.value = position;
+  }
+
+  @override
+  Future<void> seekAudioByProgress(double progress) async {
+    _audioProgress.value = progress;
+  }
+
+  @override
+  Future<void> seekAudioByProgressWithResume(
+    double progress, {
+    bool autoResume = true,
+  }) async {
+    _audioProgress.value = progress;
+  }
+
+  @override
+  String formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final minutes = twoDigits(duration.inMinutes);
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+    return '$minutes:$seconds';
+  }
+
+  @override
+  void updateAudioPlayerHeight(double height) {
+    _audioPlayerHeight.value = height;
+  }
+
+  @override
+  void refreshSurahDetail() {
+    if (_surahDetail.value != null) {
+      getSurahDetail(_surahDetail.value!.nomor);
+    }
+  }
+
+  @override
+  void navigateToNextSurah() {
+    if (_surahDetail.value?.suratSelanjutnya != null) {
+      final nextSurah = _surahDetail.value!.suratSelanjutnya!;
+      stopAudio();
+      getSurahDetail(nextSurah.nomor);
+    }
+  }
+
+  @override
+  void navigateToPreviousSurah() {
+    if (_surahDetail.value?.suratSebelumnya != null) {
+      final prevSurah = _surahDetail.value!.suratSebelumnya!;
+      stopAudio();
+      getSurahDetail(prevSurah.nomor);
+    }
+  }
+
+  @override
+  void setErrorMessage(String value) {
+    _errorMessage.value = value;
+  }
+
+  @override
+  void setLoading(bool value) {
+    _isLoading.value = value;
   }
 
   SurahDetail _createTestSurahDetail() {
