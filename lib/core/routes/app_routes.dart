@@ -14,7 +14,7 @@ class AppRoutes {
     ),
     GetPage(
       name: RouteConstants.surahDetail,
-      page: () => const SurahDetailScreen(),
+      page: () => SurahDetailScreen(surahNumber: Get.arguments as int),
       binding: SurahDetailBinding(),
     ),
   ];

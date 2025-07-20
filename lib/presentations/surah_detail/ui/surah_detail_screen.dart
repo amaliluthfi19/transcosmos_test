@@ -9,13 +9,11 @@ import 'package:transcosmos_test/presentations/shared/widgets/loading_widget.dar
 import 'package:transcosmos_test/presentations/shared/widgets/error_widget.dart';
 
 class SurahDetailScreen extends GetView<SurahDetailController> {
-  const SurahDetailScreen({super.key});
+  const SurahDetailScreen({super.key, required this.surahNumber});
+  final int surahNumber;
 
   @override
   Widget build(BuildContext context) {
-    // Get surah number from arguments
-    final int surahNumber = Get.arguments as int;
-
     // Load surah detail when screen is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.getSurahDetail(surahNumber);

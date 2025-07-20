@@ -19,6 +19,26 @@ class MockSurahRepository implements HomeRepository {
   }
 }
 
+// Mock use case for testing
+class MockGetSurahsUseCase implements GetSurahsUseCase {
+  final List<Surah>? _surahs;
+  final Exception? _exception;
+
+  MockGetSurahsUseCase({List<Surah>? surahs, Exception? exception})
+    : _surahs = surahs,
+      _exception = exception;
+
+  @override
+  HomeRepository get repository => throw UnimplementedError();
+
+  @override
+  Future<List<Surah>> execute() async {
+    if (_exception != null) throw _exception;
+    if (_surahs == null) throw Exception('Surahs not found');
+    return _surahs;
+  }
+}
+
 void main() {
   group('GetSurahsUseCase', () {
     late GetSurahsUseCase useCase;

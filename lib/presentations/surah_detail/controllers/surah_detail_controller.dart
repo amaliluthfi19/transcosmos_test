@@ -226,4 +226,12 @@ class SurahDetailController extends GetxController {
       getSurahDetail(prevSurah.nomor);
     }
   }
+
+  void setLoading(bool value) {
+    _isLoading.value = value;
+  }
+
+  void setErrorMessage(String value) {
+    _errorMessage.value = value;
+  }
 }
