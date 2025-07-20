@@ -39,8 +39,8 @@ lib/
 ## Getting Started
 
 ### Prerequisites
-- Flutter SDK (3.7.2 or higher)
-- Dart SDK
+- Flutter SDK (3.29.2)
+- Dart SDK (3.7.2)
 - VS Code
 
 ### Installation
@@ -50,16 +50,23 @@ lib/
    git clone <repository-url>
    cd transcosmos_test
    ```
+2. **Install FVM**
+  - you can see how to install in https://fvm.app/documentation/getting-started/installation
 
-2. **Install dependencies**
+3. **Install Flutter SDK Via FVM**
+  - you can install Flutter SDK Version like this:
+  ```bash
+  fvm install 3.29.2
+  ```
+4. **Install dependencies**
    ```bash
-   flutter pub get
+   fvm flutter pub get
    ```
-
-3. **Run the application**
-   ```bash
-   click run and debug in VS code
-   ```
+5. **Run the application**
+  - click run adn debug on VS Code or
+  ```bash
+  fvm flutter run
+  ```
 
 ### Adding New Features
 
