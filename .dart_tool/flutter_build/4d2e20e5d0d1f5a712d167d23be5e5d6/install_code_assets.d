@@ -1,0 +1,1 @@
+ /Users/luthfidwiamali/Documents/dev/projects/transcosmos_test/.dart_tool/flutter_build/4d2e20e5d0d1f5a712d167d23be5e5d6/native_assets.json: 

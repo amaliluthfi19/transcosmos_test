@@ -1,10 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:transcosmos_test/domain/entities/surah.dart';
-import 'package:transcosmos_test/domain/repositories/surah_repository.dart';
+import 'package:transcosmos_test/domain/repositories/home_repository.dart';
 import 'package:transcosmos_test/domain/usecases/get_surahs_usecase.dart';
 
 // Mock repository for testing
-class MockSurahRepository implements SurahRepository {
+class MockSurahRepository implements HomeRepository {
   final List<Surah> _surahs;
   final Exception? _exception;
 
@@ -17,12 +17,25 @@ class MockSurahRepository implements SurahRepository {
     if (_exception != null) throw _exception;
     return _surahs;
   }
+}
+
+// Mock use case for testing
+class MockGetSurahsUseCase implements GetSurahsUseCase {
+  final List<Surah>? _surahs;
+  final Exception? _exception;
+
+  MockGetSurahsUseCase({List<Surah>? surahs, Exception? exception})
+    : _surahs = surahs,
+      _exception = exception;
 
   @override
-  Future<Surah> getSurahByNumber(int nomor) async {
+  HomeRepository get repository => throw UnimplementedError();
+
+  @override
+  Future<List<Surah>> execute() async {
     if (_exception != null) throw _exception;
-    final surah = _surahs.firstWhere((s) => s.nomor == nomor);
-    return surah;
+    if (_surahs == null) throw Exception('Surahs not found');
+    return _surahs;
   }
 }
 

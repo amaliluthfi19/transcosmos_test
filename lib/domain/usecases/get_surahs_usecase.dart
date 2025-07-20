@@ -1,8 +1,8 @@
-import '../entities/surah.dart';
-import '../repositories/surah_repository.dart';
+import 'package:transcosmos_test/domain/entities/surah.dart';
+import 'package:transcosmos_test/domain/repositories/home_repository.dart';
 
 class GetSurahsUseCase {
-  final SurahRepository repository;
+  final HomeRepository repository;
 
   GetSurahsUseCase(this.repository);
 

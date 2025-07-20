@@ -24,12 +24,10 @@ lib/
 │   ├── entities/           # Business entities
 │   ├── repositories/       # Repository interfaces
 │   └── usecases/           # Business logic use cases
-└──  features/
+└──  presentations/         # Presentation layer
     | 
-    ├── home/
-    | 
-    └── presentation/         # Presentation layer
-    │   ├── bindings/         # GetX dependency bindings
+    ├── feature_name/
+    |   ├── bindings/         # GetX dependency bindings
     │   ├── controllers/      # GetX controllers
     │   ├── screens/          # UI screens
     │   └── widgets/          # Reusable widgets
@@ -41,8 +39,8 @@ lib/
 ## Getting Started
 
 ### Prerequisites
-- Flutter SDK (3.7.2 or higher)
-- Dart SDK
+- Flutter SDK (3.29.2)
+- Dart SDK (3.7.2)
 - VS Code
 
 ### Installation
@@ -52,16 +50,23 @@ lib/
    git clone <repository-url>
    cd transcosmos_test
    ```
+2. **Install FVM**
+  - you can see how to install in https://fvm.app/documentation/getting-started/installation
 
-2. **Install dependencies**
+3. **Install Flutter SDK Via FVM**
+  - you can install Flutter SDK Version like this:
+  ```bash
+  fvm install 3.29.2
+  ```
+4. **Install dependencies**
    ```bash
-   flutter pub get
+   fvm flutter pub get
    ```
-
-3. **Run the application**
-   ```bash
-   click run and debug in VS code
-   ```
+5. **Run the application**
+  - click run adn debug on VS Code or
+  ```bash
+  fvm flutter run
+  ```
 
 ### Adding New Features
 
@@ -69,10 +74,10 @@ lib/
 2. **Define Repository Interface** in `lib/domain/repositories/`
 3. **Create Use Cases** in `lib/domain/usecases/`
 4. **Implement Data Layer** in `lib/data/`
-5. **Create New Feature Folder** in `lib/features/`
-5. **Create Controller** in `lib/features/feature_name/presentation/controllers/`
-6. **Build UI** in `lib/features/feature_name/presentation/screens/`
-7. **Add Binding** in `lib/feature/feature_name/presentation/bindings/`
+5. **Create New Feature Folder** in `lib/presentations/`
+5. **Create Controller** in `lib/presenttions/feature_name/controllers/`
+6. **Build UI** in `lib/presentations/feature_name/screens/`
+7. **Add Binding** in `lib/presentations/feature_name/bindings/`
 
 ### Example: Adding a Product Feature
 
